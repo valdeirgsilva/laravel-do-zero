@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Site;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', Site\HomeController::class)->name('site.home');
+
+Route::get('produtos', [Site\CategoryController::class, 'index'])->name('site.products');
+Route::get('produtos/{slug}', [Site\CategoryController::class, 'show'])->name('site.products.category');
+
+Route::get('blog', Site\BlogController::class)->name('site.blog');
+
+Route::view('sobre', 'site.about.index')->name('site.about');
+
+Route::get('contato', [Site\ContactController::class, 'index'])->name('site.contact');
+Route::post('contato', [Site\ContactController::class, 'form'])->name('site.contact.form');
