@@ -7,89 +7,23 @@
         </div>
         <div class="pattern__header"></div>
     </header>
-
+    
     <!-- Products list -->
     <div class="gray-background">
         <section class="products__cultivation__category main-wrapper">
-            <article class="card__product">
-                <a href="products-detail.php">
-                    <div class="card__cover">
-                        <img src="{{asset('images\safar-safarov-MSN8TFhJ0is-unsplash.jpg')}}">
-                    </div>
-                    <header class="card__product-header">
-                        <h2 class="title-medium">Tumultumque</h2>
-                        <p>Impositios experimentum! </p>
-                    </header>
-                </a>
-            </article>
-            <article class="card__product">
-                <a href="products-detail.php">
-                    <div class="card__cover">
-                        <img src="{{asset('images\safar-safarov-MSN8TFhJ0is-unsplash.jpg')}}">
-                    </div>
-                    <header class="card__product-header">
-                        <h2 class="title-medium">Mineralis</h2>
-                        <p>Lacteas ortum! </p>
-                    </header>
-                </a>
-            </article>
-            <article class="card__product">
-                <a href="products-detail.php">
-                    <div class="card__cover">
-                        <img src="{{asset('images\safar-safarov-MSN8TFhJ0is-unsplash.jpg')}}">
-                    </div>
-                    <header class="card__product-header">
-                        <h2 class="title-medium">Historia</h2>
-                        <p>Adelphiss cantare! </p>
-                    </header>
-                </a>
-            </article>
-            <article class="card__product">
-                <a href="products-detail.php">
-                    <div class="card__cover">
-                        <img src="{{asset('images\safar-safarov-MSN8TFhJ0is-unsplash.jpg')}}">
-                    </div>
-                    <header class="card__product-header">
-                        <h2 class="title-medium">Classis</h2>
-                        <p>Equisos mori! </p>
-                    </header>
-                </a>
-            </article>
-
-            <article class="card__product">
-                <a href="products-detail.php">
-                    <div class="card__cover">
-                        <img src="{{asset('images\safar-safarov-MSN8TFhJ0is-unsplash.jpg')}}">
-                    </div>
-                    <header class="card__product-header">
-                        <h2 class="title-medium">Imperium</h2>
-                        <p>Itineris tramitems prarere! </p>
-                    </header>
-                </a>
-            </article>
-            <article class="card__product">
-                <a href="products-detail.php">
-                    <div class="card__cover">
-                        <img src="{{asset('images\safar-safarov-MSN8TFhJ0is-unsplash.jpg')}}">
-                    </div>
-                    <header class="card__product-header">
-                        <h2 class="title-medium">Experientia</h2>
-                        <p>Racanas messis! </p>
-                    </header>
-                </a>
-            </article>
-            <article class="card__product">
-                <a href="products-detail.php">
-                    <div class="card__cover">
-                        <img src="{{asset('images\safar-safarov-MSN8TFhJ0is-unsplash.jpg')}}">
-                    </div>
-                    <header class="card__product-header">
-                        <h2 class="title-medium">Lactea</h2>
-                        <p>Demolitiones prarere! </p>
-                    </header>
-                </a>
-            </article>
+            @foreach($categories as $category)
+                <article class="card__product">
+                    <a href="{{route('site.products.category', ['category' => $category->id])}}">
+                        <div class="card__cover">
+                            <img src="{{asset($category->image)}}">
+                        </div>
+                        <header class="card__product-header">
+                            <h2 class="title-medium">{{$category->name}}</h2>
+                            <p>{{$category->description}}</p>
+                        </header>
+                    </a>
+                </article>
+            @endforeach
         </section>
-
     </div>
 @endsection

@@ -17,7 +17,7 @@ use App\Http\Controllers\Site;
 Route::get('/', Site\HomeController::class)->name('site.home');
 
 Route::get('produtos', [Site\CategoryController::class, 'index'])->name('site.products');
-Route::get('produtos/{slug}', [Site\CategoryController::class, 'show'])->name('site.products.category');
+Route::get('produtos/{category}', [Site\CategoryController::class, 'show'])->name('site.products.category');
 
 Route::get('blog', Site\BlogController::class)->name('site.blog');
 
